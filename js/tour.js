@@ -36,25 +36,31 @@ AFRAME.registerComponent("tour", {
     },
     createCards: function() {
       
-      const thumbNailsRef = [
-        {
-          id: "gate",
-          title: "Gaate",
-          url: "./assets/gate/gate.jpeg"
-        },
-        {
-          id: "garden",
-          title: "Garden",
-          url: "./assets/garden/garden.jpg"
-        },
-  
-        {
-          id: "house",
-          title: "house",
-          url: "./assets/house/house.jpeg"
-        },
-        
-      ];
+     const thumbNailsRef={
+      gate:{
+        position:{x:20,y:-4.5,z:-5.5},
+        rotation:{x:0,y:-90,z:0},
+        src:"./assets/gate/gate.jpeg",
+        title:"Gate",
+        id:"gate"
+      },
+
+      garden:{
+        position:{x:4.6,y:-5.5,z:25},
+        rotation:{x:180,y:0,z:0},
+        src:"./assets/garden/garden.jpg",
+        title:"Garden",
+        id:"garden"
+      },
+
+      house:{
+        position:{x:-9,y:34,z:-100},
+        rotation:{x:0,y:0,z:0},
+        src:"./assets/house/house.jpeg",
+        title:"House",
+        id:"house"
+      },
+     }
       let prevoiusXPosition = -60;
       for (var item of thumbNailsRef) {
         const posX = prevoiusXPosition + 25;
@@ -77,23 +83,7 @@ AFRAME.registerComponent("tour", {
         this.placesContainer.appendChild(borderEl);
       }
     },
-    createBorder: function(position, id) {
-      const entityEl = document.createElement("a-entity");
-      entityEl.setAttribute("id", id);
-      entityEl.setAttribute("visible", true);
-      entityEl.setAttribute("geometry", {
-        primitive: "ring",
-        radiusInner: 9,
-        radiusOuter: 10
-      });
-      entityEl.setAttribute("position", position);
-      entityEl.setAttribute("material", {
-        color: "#0077CC",
-        opacity: 1
-      });
-      entityEl.setAttribute("cursor-listener", {});
-      return entityEl;
-    },
+  
     createThumbNail: function(item) {
       const entityEl = document.createElement("a-entity");
       entityEl.setAttribute("visible", true);
