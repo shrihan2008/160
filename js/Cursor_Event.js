@@ -8,7 +8,7 @@ AFRAME.registerComponent('cursor-listener',{
     init:function(){
         this.handleMouseEnterEvents();
         this.handleMouseLeaveEvents();
-        this.handle1clickEvents()
+        this.handleClickEvents()
     },
 
     handlePlacesListState:function(){
