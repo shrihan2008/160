@@ -36,7 +36,7 @@ AFRAME.registerComponent("tour", {
     },
     createCards: function() {
       
-     const thumbNailsRef={
+     const details={
       gate:{
         position:{x:20,y:-4.5,z:-5.5},
         rotation:{x:0,y:-90,z:0},
@@ -61,27 +61,16 @@ AFRAME.registerComponent("tour", {
         id:"house"
       },
      }
-      let prevoiusXPosition = -60;
-      for (var item of thumbNailsRef) {
-        const posX = prevoiusXPosition + 25;
-        const posY = 10;
-        const posZ = -40;
-        const position = { x: posX, y: posY, z: posZ };
-        prevoiusXPosition = posX;
-  
-        // Border Element
-        const borderEl = this.createBorder(position, item.id);
-  
-        // Thubnail Element
-        const thumbNail = this.createThumbNail(item);
-        borderEl.appendChild(thumbNail);
-  
-        // Title Text Element
-        const titleEl = this.createTitleEl(position, item);
-        borderEl.appendChild(titleEl);
-  
-        this.placesContainer.appendChild(borderEl);
-      }
+      
+     
+     for(var key in details){
+      const item=details[key]
+      const thumbnail=this.createThumbNail(item)
+      const title=this.createTitleEl(item)
+      thumbnail.appendChild(item)
+      this.placesContainer.appendChild(thumbnail)
+
+     }
     },
   
     createThumbNail: function(item) {
