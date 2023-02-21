@@ -61,12 +61,12 @@ AFRAME.registerComponent("tour", {
         id:"house"
       },
      }
-      
+
      
      for(var key in details){
       const item=details[key]
       const thumbnail=this.createThumbNail(item)
-      const title=this.createTitleEl(item)
+      
       thumbnail.appendChild(item)
       this.placesContainer.appendChild(thumbnail)
 
@@ -85,13 +85,14 @@ AFRAME.registerComponent("tour", {
       return entityEl;
     },
     createTitleEl: function(position, item) {
+      const title=this.createTitleEl(item)
       const entityEl = document.createElement("a-entity");
       entityEl.setAttribute("text", {
         font: "exo2bold",
         align: "center",
         width: 60,
         color: "#e65100",
-        value: item.title
+        value: title
       });
       const elPosition = position;
       elPosition.y = -20;
