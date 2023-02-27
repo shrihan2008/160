@@ -34,6 +34,23 @@ AFRAME.registerComponent("tour", {
         color: "#fff"
       });
     },
+
+    createTitleEl: function(position, item) {
+      const title=this.createTitleEl(item)
+      const entityEl = document.createElement("a-entity");
+      entityEl.setAttribute("text", {
+        font: "exo2bold",
+        align: "center",
+        width: 60,
+        color: "#e65100",
+        value: title
+      });
+      const elPosition = position;
+      elPosition.y = -20;
+      entityEl.setAttribute("position", elPosition);
+      entityEl.setAttribute("visible", true);
+      return entityEl;
+    },
     createCards: function() {
       
      const details={
@@ -63,43 +80,19 @@ AFRAME.registerComponent("tour", {
      }
 
      
+     
      for(var key in details){
+   
       const item=details[key]
       const thumbnail=this.createThumbNail(item)
-      
       thumbnail.appendChild(item)
       this.placesContainer.appendChild(thumbnail)
 
      }
     },
   
-    createThumbNail: function(item) {
-      const entityEl = document.createElement("a-entity");
-      entityEl.setAttribute("visible", true);
-      entityEl.setAttribute("geometry", {
-        primitive: "circle",
-        radius: 9
-      });
-      entityEl.setAttribute("material", { src: item.url });
-      entityEl.setAttribute("cursor-listener", {});
-      return entityEl;
-    },
-    createTitleEl: function(position, item) {
-      const title=this.createTitleEl(item)
-      const entityEl = document.createElement("a-entity");
-      entityEl.setAttribute("text", {
-        font: "exo2bold",
-        align: "center",
-        width: 60,
-        color: "#e65100",
-        value: title
-      });
-      const elPosition = position;
-      elPosition.y = -20;
-      entityEl.setAttribute("position", elPosition);
-      entityEl.setAttribute("visible", true);
-      return entityEl;
-    }, 
+    
+  
     
   });
   
