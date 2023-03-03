@@ -1,50 +1,138 @@
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
-    <meta charset="utf-8" />
-    <title>Virtual Tour</title>
+    <title>Shooting Game in Virtual Reality</title>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
-
-    <script src="js/tour.js"></script>
-    <script src="js/Cursor_Event.js"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    
+    <script src="./shoot.js"></script>
   </head>
-  <body>
-    <a-scene id="main-scene">
+  <body bgcolor="yellow">
+    <a-scene id="scene">
+
+      <!--Assets-->
+      <a-assets>        
+        <a-asset-item
+          id="shooter"
+          src="./models/shooter/scene.gltf"
+        ></a-asset-item>
+
+        <a-asset-item
+        id="pin"
+        src="./models/pin/scene.gltf"
+        ></a-asset-item>
+        
+      </a-assets>
       
+      <!--Light-->
+      <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
 
-      <a-sky id="main-container" radius="5000" color="#98DAFC"></a-sky>
-
-      <!-- Places Container -->
-      <a-entity id="places-container" cursor-listener tour></a-entity>
-
-      <!-- CAMERA -->
-      <a-camera id="camera" wasd-controls="enabled:false;">
-        <!-- App Title -->
+      <!--Camera and Cursor-->
+      <a-entity
+        id="camera"
+        camera
+        position="0 1.6 0"
+        wasd-controls
+        look-controls="pointerLockEnabled: false"        
+      >
         <a-entity
-          id="app-title"
-          position="0 0.73 -1"
-          text="font: exo2bold; align: center; width: 2; color: #000; value: My Great"
-        >
-          <a-entity
-            id="app-subtitle"
-            position="0 -0.1 0"
-            text="font: dejavu; align: center; width: 1; color: #0F184E; value: Home"
-          ></a-entity>
+            id="weapon"
+            gltf-model="#shooter"
+            position="0 -4.4 3"
+            rotation="0 180 0"
+            scale="0.35 1 1"          
+          >
         </a-entity>
+        <a-entity>
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-2 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-4 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-6 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-8 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-10 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-12 0 -1"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-6 0 -4"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-8 0 -4"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-10 0 -4"
+          ></a-entity>
+  
+          <a-entity id="pin"
+          gltf-model="#pin"
+          position="-12 0 -4"
+          ></a-entity>
 
-        <!--Background-->
-        <a-entity> </a-entity>
 
-        <a-entity id="camera-cursor"
-        cursor
-        position="0 0 -1"
-        geometry="primitive:ring ; radiusInner:0.01 ; radiusOuter:0.02 ; "
-        material="color:blue ; shader:flat"
-        > </a-entity>
-      </a-camera>
+          
+
+        <a-entity id="pin"
+        gltf-model="#pin"
+        position="-14 0 -1"
+        ></a-entity>
+
+      
+       
+       <a-entity>
+        <a-cursor></a-cursor>        
+      </a-entity>
+
+   
+      </a-entity>
+      <!--Bullets-->
+      <a-entity ball></a-entity>
+
+      <!--Ground-->
+      <a-plane
+        id="ground"
+        repeat="5 5"
+        position="0 1 0"
+        rotation="-90 0 0"
+        height="200"
+        width="200"
+        color="#FBF2D4"
+        static-body
+        visible="true"
+      >
+      </a-plane>
+
+      <!--Boxes-->
+ 
     </a-scene>
   </body>
 </html>
