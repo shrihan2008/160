@@ -15,4 +15,5 @@ AFRAME.registerComponent("bowling-balls", {
           var direction = new THREE.Vector3(); 
           camera.getWorldDirection(direction); 
           ball.setAttribute("velocity", direction.multiplyScalar(-10)); 
-          var scene = document.querySelector("#scene"); scene.appendChild(ball); } }); }, });
+          var scene = document.querySelector("#scene"); 
+          scene.appendChild(ball); } }); }, });
