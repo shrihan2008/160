@@ -6,7 +6,7 @@ AFRAME.registerComponent("bowling-balls", {
         if (e.key === "z") 
       {
          var ball = document.createElement("a-entity"); 
-         ball.setAttribute("gltf-model", "./models/shooter/scene.gltf"); 
+         ball.setAttribute("gltf-model", "ball"); 
          ball.setAttribute("scale", { x: 3, y: 3, z: 3}); 
          var cam = document.querySelector("#camera"); 
          pos = cam.getAttribute("position"); 
