@@ -18,7 +18,7 @@ AFRAME.registerComponent("bowling-balls", {
         ball.setAttribute("position", {
           x: pos.x,
           y: pos.y-1.2,
-          z: pos.z,
+          z: pos.z-2,
         });
 
         var camera = document.querySelector("#camera").object3D;
